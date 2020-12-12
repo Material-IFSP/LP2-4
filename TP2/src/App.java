@@ -1,3 +1,4 @@
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JOptionPane;
@@ -6,6 +7,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.InputMismatchException;
+
 
 public class App extends Frame implements ActionListener {
 
@@ -33,6 +35,7 @@ public class App extends Frame implements ActionListener {
         btnOk.setSize(5, 5);
         btnSair.setSize(5, 5);
         btnMostrar.setSize(5, 5);
+        //f.setLayout(new BoxLayout(f,BoxLayout.PAGE_AXIS));
         f.setSize(400, 180);
         f.setLocation(200, 200);
 
@@ -63,7 +66,7 @@ public class App extends Frame implements ActionListener {
         /*--------------------------------------- */
 
         f.add(p1);
-        f.add(p2);
+        f.add(p2, BorderLayout.PAGE_END);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
     }
