@@ -1,8 +1,8 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+    import java.awt.*;
+    import java.awt.event.*;
+    import javax.swing.*;
 
-public class App extends Frame implements WindowListener {
+public class App extends Frame implements WindowListener, ActionListener {
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
         //Frame frameTela = new Frame();
@@ -12,7 +12,7 @@ public class App extends Frame implements WindowListener {
         // Inicializando um Gridview passando os parametros na seguinte ordem :
         // 0 linhas, 2 colunas, 0 hgap e 10 vgap (espaçamento explicito no pdf do tp)
         GridLayout gridlayout1 = new GridLayout(0, 2, 0, 10);
-        GridLayout gridlayout2 = new GridLayout(0, 4, 2, 0);
+        GridLayout gridlayout2 = new GridLayout(0, 4, 2, 10);
         // abaixo usando dois paineis para separar os botoes inferiores do restante da aplicação
         JPanel painel1 = new JPanel(gridlayout1);
         JPanel painel2 = new JPanel(gridlayout2);
@@ -78,9 +78,14 @@ public class App extends Frame implements WindowListener {
 
     // #region LISTENER FECHAMENTO DA APLICAÇÃO
     // funções Listener para fechar a aplicação
+
+    public void actionPerformed(ActionEvent e) {
+       
+    }
     public void windowClosing(WindowEvent e) {
         System.exit(0);
     }
+
 
     public void windowOpened(WindowEvent e) {
     }

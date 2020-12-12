@@ -10,7 +10,7 @@ public class Aluno {
     {
         return _uuid;
     }
-
+    
     public String getEndereco()
     {
         return _endereco;
