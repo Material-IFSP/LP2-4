@@ -6,6 +6,14 @@ public class Aluno {
     private int _idade;
     private UUID _uuid;
     
+    public Aluno(String endereco, String nome,int idade) 
+    {
+        _uuid = UUID.randomUUID();
+        _idade = idade;
+        _endereco = endereco;
+        _nome = nome;
+    }
+
     public UUID getUUID()
     {
         return _uuid;

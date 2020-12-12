@@ -1,108 +1,107 @@
-    import java.awt.*;
-    import java.awt.event.*;
-    import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JOptionPane;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.InputMismatchException;
 
-public class App extends Frame implements WindowListener, ActionListener {
-    public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
-        //Frame frameTela = new Frame();
+public class App extends Frame implements ActionListener {
 
-        // #region INICIALIZAÇÃO FORMULÁRIO E OBJETO DA CLASSE PARA SER LIDA PELO
-        // LISTENER
-        // Inicializando um Gridview passando os parametros na seguinte ordem :
-        // 0 linhas, 2 colunas, 0 hgap e 10 vgap (espaçamento explicito no pdf do tp)
-        GridLayout gridlayout1 = new GridLayout(0, 2, 0, 10);
-        GridLayout gridlayout2 = new GridLayout(0, 4, 2, 10);
-        // abaixo usando dois paineis para separar os botoes inferiores do restante da aplicação
-        JPanel painel1 = new JPanel(gridlayout1);
-        JPanel painel2 = new JPanel(gridlayout2);
-        //instanciando a classe app e jogando-a no listener para fechar a janela.
-        App app1 = new App();
-        app1.addWindowListener(app1);
-        // #endregion
+    List<Aluno> alunos = new ArrayList<Aluno>();
 
-        // #region DECLARACAO VALORES E INICIALIZAÇÃO
-        // Declarando os valores
-        Label labelNome, labelIdade, labelEndereco;
-        TextField txtFieldNome, txtFieldIdade, txtEndereco;
-        Button btnOK, btnLimpar, btnMostrar, btnSair;
+    Label lblNome = new Label("Nome");
+    Label lblIdade = new Label("Idade");
+    Label lblEndereco = new Label("Endereco");
+    TextField txtFieldNome = new TextField(10);
+    TextField txtFieldIdade = new TextField();
+    TextField txtEndereco = new TextField();
+    Button btnMostrar = new Button("Mostrar");
+    Button btnOk = new Button("Ok");
+    Button btnSair = new Button("Sair");
+    Button btnLimpar = new Button("Limpar");
 
-        // Inicializando as labels
-        labelNome = new Label("Nome:     ", Label.LEFT);
-        labelIdade = new Label("Idade:    ", Label.LEFT);
-        labelEndereco = new Label("Endereço: ", Label.LEFT);
+    JFrame f = new JFrame("TP2 - Linguagem de Programação 2");
+    JPanel p1 = new JPanel(null);
+    JPanel p2 = new JPanel(null);
 
-        // Inicializando os Textbox
-        txtFieldNome = new TextField(10);
-        txtFieldIdade = new TextField();
-        txtEndereco = new TextField();
+    public App() {
 
-        // inicializando os Button
-        btnOK = new Button("OK");
-        btnLimpar = new Button("Limpar");
-        btnMostrar = new Button("Mostrar");
-        btnSair = new Button("Sair");
-        // #endregion
+        super();
+        btnLimpar.setSize(5, 5);
+        btnOk.setSize(5, 5);
+        btnSair.setSize(5, 5);
+        btnMostrar.setSize(5, 5);
+        f.setSize(400, 180);
+        f.setLocation(200, 200);
 
-        // #region CONFIGURAÇÃOES FRAME
-        // Configurações Frame
-        app1.setBackground(Color.lightGray);
-        app1.setTitle("TP02  - L22|4");
-        app1.setSize(400, 180);
-        app1.setLocation(200, 200);
-        app1.add(painel1);
-        app1.setLayout(new BoxLayout(app1, BoxLayout.PAGE_AXIS));
-        app1.setVisible(true);
+        /*----------------------------------------*/
+        p1.setLayout(new GridLayout(0, 2, 0, 10));
+        p1.setSize(380, 120);
 
-        // Configurações Painel1
-        painel1.setSize(380, 120);
-        painel1.setLayout(gridlayout1);
-        painel1.add(labelNome);
-        painel1.add(txtFieldNome);
-        painel1.add(labelIdade);
-        painel1.add(txtFieldIdade);
-        painel1.add(labelEndereco);
-        painel1.add(txtEndereco);
-        painel1.setVisible(true);
+        p1.add(lblNome);
+        p1.add(txtFieldNome);
+        p1.add(lblIdade);
+        p1.add(txtFieldIdade);
+        p1.add(lblEndereco);
+        p1.add(txtEndereco);
+        /*----------------------------------------*/
 
-        // Configurações Painel2
-        app1.add(painel2);
-        painel2.setLayout(gridlayout2);
-        painel2.add(btnOK);
-        painel2.add(btnLimpar);
-        painel2.add(btnMostrar);
-        painel2.add(btnSair);
-        painel2.setVisible(true);
-        // #endregion
+        /*--------------------------------------- */
+
+        p2.setLayout(new GridLayout(0, 4, 2, 10));
+        btnOk.addActionListener(this);
+        p2.add(btnOk);
+        btnLimpar.addActionListener(this);
+        p2.add(btnLimpar);
+        btnMostrar.addActionListener(this);
+        p2.add(btnMostrar);
+        btnSair.addActionListener(this);
+        p2.add(btnSair);
+
+        /*--------------------------------------- */
+
+        f.add(p1);
+        f.add(p2);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setVisible(true);
     }
 
-    // #region LISTENER FECHAMENTO DA APLICAÇÃO
-    // funções Listener para fechar a aplicação
+    public static void main(String[] args) throws Exception {
+        new App();
+    }
 
     public void actionPerformed(ActionEvent e) {
-       
-    }
-    public void windowClosing(WindowEvent e) {
-        System.exit(0);
+
+        if (e.getSource() == btnOk) {
+            try {
+                int idade = Integer.parseInt(txtFieldIdade.getText().toString());
+                alunos.add(new Aluno(txtEndereco.getText().toString(), txtFieldNome.getText().toString(), idade));
+                txtEndereco.setText("");
+                txtFieldIdade.setText("");
+                txtFieldNome.setText("");
+                JOptionPane.showMessageDialog(null, "Salvo");
+            } catch (Exception exception) {
+                JOptionPane.showMessageDialog(null, "Preencha os dados corretamente!");
+            }
+
+        }
+        if (e.getSource() == btnLimpar) {
+            txtEndereco.setText("");
+            txtFieldIdade.setText("");
+            txtFieldNome.setText("");
+        }
+        if (e.getSource() == btnMostrar) {
+            String nomes = "";
+            for (Aluno aluno : alunos) {
+                nomes += "ID: " + aluno.getUUID() + " NOME: " + aluno.getNome() + "\n";
+            }
+            JOptionPane.showMessageDialog(null, nomes);
+        }
+        if (e.getSource() == btnSair) {
+            System.exit(0);
+        }
     }
 
-
-    public void windowOpened(WindowEvent e) {
-    }
-
-    public void windowIconified(WindowEvent e) {
-    }
-
-    public void windowDeiconified(WindowEvent e) {
-    }
-
-    public void windowDeactivated(WindowEvent e) {
-    }
-
-    public void windowActivated(WindowEvent e) {
-    }
-
-    public void windowClosed(WindowEvent e) {
-    }
-    // #endregion
 }
