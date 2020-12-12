@@ -11,4 +11,4 @@
         Ex.:    ../tp1/Ex1 
                 ../tp1/Ex2 
                 ../tp1/Ex3
-    Ou seja, precia está explicitamente dentro da solução para que nao haja erro.
+    Ou seja, precisa estar explicitamente dentro da solução para que nao haja erro.
