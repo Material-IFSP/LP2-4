@@ -115,7 +115,7 @@ public class Calculadora extends Frame implements ActionListener {
     f.setLayout(new GridLayout(5, 1, 0, 5));
     f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     f.setVisible(true);
-    f.setSize(400, 600);
+    f.setSize(300, 400);
     //#endregion
 }
 
@@ -186,7 +186,6 @@ public class Calculadora extends Frame implements ActionListener {
             calculo1 = 0;
             calculo2 = 0;
             txtFieldNome.setText("");
-            menos.enable(); mais.enable(); dividir.enable(); multi.enable();
         }
         //#endregion
 
@@ -196,23 +195,19 @@ public class Calculadora extends Frame implements ActionListener {
                 case "-":
                     calculo2 = Double.parseDouble(txtFieldNome.getText());
                     txtFieldNome.setText(Double.toString(calculo1 - calculo2));
-                    menos.disable(); mais.disable(); dividir.disable(); multi.disable();
                     break;
 
                 case "+":
                     calculo2 = Double.parseDouble(txtFieldNome.getText());
                     txtFieldNome.setText(Double.toString(calculo1 + calculo2));
-                    menos.disable(); mais.disable(); dividir.disable(); multi.disable();
                     break;
                 case "*":
                     calculo2 = Double.parseDouble(txtFieldNome.getText());
                     txtFieldNome.setText(Double.toString(calculo1 * calculo2));
-                    menos.disable(); mais.disable(); dividir.disable(); multi.disable();
                     break;
                 case "/":
                     calculo2 = Double.parseDouble(txtFieldNome.getText());
                     txtFieldNome.setText(Double.toString(calculo1 / calculo2));
-                    menos.disable(); mais.disable(); dividir.disable(); multi.disable();
                     break;
             }
         }
