@@ -41,11 +41,10 @@ public class Calculadora extends Frame implements ActionListener {
 
     // #endregion
 
-    //#region Paineis
+    // #region Paineis
     public Calculadora() {
         super();
 
-        // NÃO retirar a linha abaixo
         txtFieldNome.disable();
         txtFieldNome.setText("");
 
@@ -81,43 +80,43 @@ public class Calculadora extends Frame implements ActionListener {
         p5.add(mais);
         p5.add(clear);
 
-        //#endregion
+        // #endregion
 
-    //#region ActionListener
-    btn0.addActionListener(this);
-    btn1.addActionListener(this);
-    btn2.addActionListener(this);
-    btn3.addActionListener(this);
-    btn4.addActionListener(this);
-    btn5.addActionListener(this);
-    btn6.addActionListener(this);
-    btn7.addActionListener(this);
-    btn8.addActionListener(this);
-    btn9.addActionListener(this);
+        // #region ActionListener
+        btn0.addActionListener(this);
+        btn1.addActionListener(this);
+        btn2.addActionListener(this);
+        btn3.addActionListener(this);
+        btn4.addActionListener(this);
+        btn5.addActionListener(this);
+        btn6.addActionListener(this);
+        btn7.addActionListener(this);
+        btn8.addActionListener(this);
+        btn9.addActionListener(this);
 
-    menos.addActionListener(this);
-    mais.addActionListener(this);
-    multi.addActionListener(this);
-    dividir.addActionListener(this);
-    clear.addActionListener(this);
-    igual.addActionListener(this);
+        menos.addActionListener(this);
+        mais.addActionListener(this);
+        multi.addActionListener(this);
+        dividir.addActionListener(this);
+        clear.addActionListener(this);
+        igual.addActionListener(this);
 
-    //#endregion
+        // #endregion
 
-    //#region Frame
-    f.add(p1);
-    f.add(p2);
-    f.add(p3);
-    f.add(p4);
-    f.add(p5);
+        // #region Frame
+        f.add(p1);
+        f.add(p2);
+        f.add(p3);
+        f.add(p4);
+        f.add(p5);
 
-    // f.setLayout(new FlowLayout(FlowLayout.LEFT));
-    f.setLayout(new GridLayout(5, 1, 0, 5));
-    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    f.setVisible(true);
-    f.setSize(300, 400);
-    //#endregion
-}
+        // f.setLayout(new FlowLayout(FlowLayout.LEFT));
+        f.setLayout(new GridLayout(5, 1, 0, 5));
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setVisible(true);
+        f.setSize(300, 400);
+        // #endregion
+    }
 
     public static void main(String[] args) throws Exception {
         new Calculadora();
@@ -127,91 +126,101 @@ public class Calculadora extends Frame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        //#region Eventos Botoes Numericos
-        if (e.getSource() == btn0) {
-            txtFieldNome.setText(txtFieldNome.getText().toString() + "0");
-        }
-        if (e.getSource() == btn1) {
-            txtFieldNome.setText(txtFieldNome.getText().toString() + "1");
-        }
-        if (e.getSource() == btn2) {
-            txtFieldNome.setText(txtFieldNome.getText().toString() + "2");
-        }
-        if (e.getSource() == btn3) {
-            txtFieldNome.setText(txtFieldNome.getText().toString() + "3");
-        }
-        if (e.getSource() == btn4) {
-            txtFieldNome.setText(txtFieldNome.getText().toString() + "4");
-        }
-        if (e.getSource() == btn5) {
-            txtFieldNome.setText(txtFieldNome.getText().toString() + "5");
-        }
-        if (e.getSource() == btn6) {
-            txtFieldNome.setText(txtFieldNome.getText().toString() + "6");
-        }
-        if (e.getSource() == btn7) {
-            txtFieldNome.setText(txtFieldNome.getText().toString() + "7");
-        }
-        if (e.getSource() == btn8) {
-            txtFieldNome.setText(txtFieldNome.getText().toString() + "8");
-        }
-        if (e.getSource() == btn9) {
-            txtFieldNome.setText(txtFieldNome.getText().toString() + "9");
-        }
-        //#endregion
+        try {
 
-
-        //#region Eventos Operacoes Aritmeticas
-        if (e.getSource() == menos) {
-            operacao = "-";
-            calculo1 = Double.parseDouble(txtFieldNome.getText());
-            txtFieldNome.setText("");
-        }
-        if (e.getSource() == mais) {
-            operacao = "+";
-            calculo1 = Double.parseDouble(txtFieldNome.getText());
-            txtFieldNome.setText("");
-        }
-        if (e.getSource() == multi) {
-            operacao = "*";
-            calculo1 = Double.parseDouble(txtFieldNome.getText());
-            txtFieldNome.setText("");
-        }
-        if (e.getSource() == dividir) {
-            operacao = "/";
-            calculo1 = Double.parseDouble(txtFieldNome.getText());
-            txtFieldNome.setText("");
-        }
-        if (e.getSource() == clear) {
-            calculo1 = 0;
-            calculo2 = 0;
-            txtFieldNome.setText("");
-        }
-        //#endregion
-
-        //#region Resultado
-        if (e.getSource() == igual) {
-            switch (operacao) {
-                case "-":
-                    calculo2 = Double.parseDouble(txtFieldNome.getText());
-                    txtFieldNome.setText(Double.toString(calculo1 - calculo2));
-                    break;
-
-                case "+":
-                    calculo2 = Double.parseDouble(txtFieldNome.getText());
-                    txtFieldNome.setText(Double.toString(calculo1 + calculo2));
-                    break;
-                case "*":
-                    calculo2 = Double.parseDouble(txtFieldNome.getText());
-                    txtFieldNome.setText(Double.toString(calculo1 * calculo2));
-                    break;
-                case "/":
-                    calculo2 = Double.parseDouble(txtFieldNome.getText());
-                    txtFieldNome.setText(Double.toString(calculo1 / calculo2));
-                    break;
+            // #region Eventos Botoes Numericos
+            if (e.getSource() == btn0) {
+                txtFieldNome.setText(txtFieldNome.getText().toString() + "0");
             }
+            if (e.getSource() == btn1) {
+                txtFieldNome.setText(txtFieldNome.getText().toString() + "1");
+            }
+            if (e.getSource() == btn2) {
+                txtFieldNome.setText(txtFieldNome.getText().toString() + "2");
+            }
+            if (e.getSource() == btn3) {
+                txtFieldNome.setText(txtFieldNome.getText().toString() + "3");
+            }
+            if (e.getSource() == btn4) {
+                txtFieldNome.setText(txtFieldNome.getText().toString() + "4");
+            }
+            if (e.getSource() == btn5) {
+                txtFieldNome.setText(txtFieldNome.getText().toString() + "5");
+            }
+            if (e.getSource() == btn6) {
+                txtFieldNome.setText(txtFieldNome.getText().toString() + "6");
+            }
+            if (e.getSource() == btn7) {
+                txtFieldNome.setText(txtFieldNome.getText().toString() + "7");
+            }
+            if (e.getSource() == btn8) {
+                txtFieldNome.setText(txtFieldNome.getText().toString() + "8");
+            }
+            if (e.getSource() == btn9) {
+                txtFieldNome.setText(txtFieldNome.getText().toString() + "9");
+            }
+            // #endregion
+
+            // #region Eventos Operacoes Aritmeticas
+            if (e.getSource() == menos) {
+                operacao = "-";
+                calculo1 = Double.parseDouble(txtFieldNome.getText());
+                txtFieldNome.setText("");
+
+            }
+            if (e.getSource() == mais) {
+                operacao = "+";
+                calculo1 = Double.parseDouble(txtFieldNome.getText());
+                txtFieldNome.setText("");
+            }
+            if (e.getSource() == multi) {
+                operacao = "*";
+                calculo1 = Double.parseDouble(txtFieldNome.getText());
+                txtFieldNome.setText("");
+            }
+            if (e.getSource() == dividir) {
+                operacao = "/";
+                calculo1 = Double.parseDouble(txtFieldNome.getText());
+                txtFieldNome.setText("");
+            }
+            if (e.getSource() == clear) {
+                calculo1 = 0;
+                calculo2 = 0;
+                txtFieldNome.setText("");
+            }
+        } catch (Exception exception) {
+
         }
-        //#endregion
+        // #endregion
+
+        // #region Resultado
+        if (e.getSource() == igual) {
+            try {
+                switch (operacao) {
+                    case "-":
+                        calculo2 = Double.parseDouble(txtFieldNome.getText());
+                        txtFieldNome.setText(Double.toString(calculo1 - calculo2));
+                        break;
+
+                    case "+":
+                        calculo2 = Double.parseDouble(txtFieldNome.getText());
+                        txtFieldNome.setText(Double.toString(calculo1 + calculo2));
+                        break;
+                    case "*":
+                        calculo2 = Double.parseDouble(txtFieldNome.getText());
+                        txtFieldNome.setText(Double.toString(calculo1 * calculo2));
+                        break;
+                    case "/":
+                        calculo2 = Double.parseDouble(txtFieldNome.getText());
+                        txtFieldNome.setText(Double.toString(calculo1 / calculo2));
+                        break;
+                }
+            } catch (Exception exception) {
+
+            }
+
+        }
+        // #endregion
     }
 
 }
