@@ -4,10 +4,12 @@ import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 
 public class CadastroV3 extends Frame  implements ActionListener
 {   
-
+    
+    Pessoa pessoas = new Pessoa();
     JFrame f = new JFrame("TP3 - CADASTRO V1");
     JPanel p1 = new JPanel(null);
     JPanel p2 = new JPanel(null);
@@ -29,9 +31,15 @@ public class CadastroV3 extends Frame  implements ActionListener
     Button btnLimpar = new Button("Limpar");
     Button btnMostrar = new Button("Mostrar");
     Button btnSair = new Button("Sair");
+    boolean isTrue = true;
 
     public CadastroV3() {
         super();
+        txtFieldNumero.disable();
+        btnLimpar.addActionListener(this);
+        btnMostrar.addActionListener(this);
+        btnOk.addActionListener(this);
+        btnSair.addActionListener(this);
 
         p1.setLayout(new GridLayout(0, 2, 0, 5));
         p1.setSize(100, 100);
@@ -81,7 +89,72 @@ public class CadastroV3 extends Frame  implements ActionListener
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+       
+        if (e.getSource() == btnOk) {
+            
+            String x = "";
+            
+            if(JRadBtnMasc.isSelected()){
+                x = JRadBtnMasc.getText();
+            }
+            if(JRadBtnFemin.isSelected()){
+                x = JRadBtnFemin.getText();
+            }  
+
+            try {
+
+                var name = txtFieldNome.getText();
+                if (name.length() < 3) {
+                    JOptionPane.showMessageDialog(null, "O nome não pode ser vazio, ou menor que 3 caracter");
+                    isTrue = false;
+                }
+
+                var idade = txtFieldIdade.getText();
+                if (idade.length() <= 0 || idade.length() > 2) {
+                    JOptionPane.showMessageDialog(null, "Idade deve ter no maximo 2 caracter e no minimo 1");
+                    isTrue = false;
+                }
+                char sexo = x.charAt(0);
+                if (sexo != 'M' && sexo != 'F') {
+                    JOptionPane.showMessageDialog(null, "Preencha corretamente M (Masculino) ou F(Feminino)");
+                    isTrue = false;
+                }
+                if (isTrue) {
+                    pessoas.setNome(name);
+                    pessoas.setIdade(Integer.parseInt(idade));
+                    pessoas.setSexo(sexo);
+                    pessoas.setKp();
+                    JOptionPane.showMessageDialog(null, "salvo");
+                }
+                txtFieldIdade.setText("");
+                txtFieldNome.setText("");
+
+            } catch (Exception exception) {
+                JOptionPane.showMessageDialog(null, "Ocorreu um erro, tente novamente");
+                txtFieldIdade.setText("");
+                txtFieldNome.setText("");
+                txtFieldNumero.setText("");
+            }
+
+        }
+
+        if (e.getSource() == btnLimpar) {
+            txtFieldIdade.setText("");
+            txtFieldNome.setText("");
+            txtFieldNumero.setText("");
+
+        }
+
+        if (e.getSource() == btnMostrar) {
+            txtFieldIdade.setText("" + pessoas.getIdade());
+            txtFieldNome.setText(pessoas.getNome());
+            txtFieldNumero.setText("" + pessoas.getKp());
+        }
+
+        if (e.getSource() == btnSair) {
+            System.exit(0);
+        }
+
 
     }
 }
