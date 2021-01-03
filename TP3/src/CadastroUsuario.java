@@ -86,6 +86,9 @@ public class CadastroUsuario extends Frame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == btnOk) {
+           try {
+               
+           
             var name = txtFieldNome.getText();
             if (name.length() < 3) {
                 JOptionPane.showMessageDialog(null, "O nome não pode ser vazio, ou menor que 3 caracter");
@@ -107,12 +110,18 @@ public class CadastroUsuario extends Frame implements ActionListener {
                 pessoas.setIdade(Integer.parseInt(idade));
                 pessoas.setSexo(sexo);
                 pessoas.setKp();
-                JOptionPane.showMessageDialog(null, "ok");
+                JOptionPane.showMessageDialog(null, "salvo");
             }
             txtFieldIdade.setText("");
             txtFieldNome.setText("");
             txtFieldSexo.setText("");
-            
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro, tente novamente");
+            txtFieldIdade.setText("");
+            txtFieldNome.setText("");
+            txtFieldSexo.setText("");
+            txtFieldNumero.setText("");
+        }
             
         }
 
