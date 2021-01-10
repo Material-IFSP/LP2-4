@@ -9,12 +9,12 @@ import java.util.List;
 public class TP4Controller {
 	
 	public List<FuncionarioDTO> getFuncByName(String name){
-			List<FuncionarioDTO> listFunc = new ArrayList<FuncionarioDTO>();
+		ArrayList<FuncionarioDTO> listFunc = new ArrayList<FuncionarioDTO>();
 			try {
 				
 				Connection conn = ConexaoUTIL.getInstance().getConnection();
 				
-				String sql = "SELECT * FROM tbFuncs WHERE nome_Func LIKE % "+name+"% ";
+				String sql = "SELECT * FROM tbFuncs WHERE nome_Func like '%"+name+"%'";
 				
 				PreparedStatement statement = conn.prepareStatement(sql);
 				
@@ -41,5 +41,32 @@ public class TP4Controller {
 			
 			
 			return listFunc;
+	}
+	public String getCargobyId(int id){
+		CargoDTO carg = new CargoDTO();
+		
+			try {
+				
+				Connection conn = ConexaoUTIL.getInstance().getConnection();
+				
+				String sql = "Select ds_cargo from tbCargos where cd_cargo = " + id;
+				
+				PreparedStatement statement = conn.prepareStatement(sql);
+				
+				ResultSet resultset = statement.executeQuery();
+				
+				while(resultset.next())
+				{
+					 carg.setDescricaoCargo(resultset.getString("ds_cargo"));								
+				}
+				
+				conn.close();
+				
+			}
+			catch(Exception e) {
+				e.getStackTrace();
+			}
+			
+			return carg.DescricaoCargo;
 	}
 }

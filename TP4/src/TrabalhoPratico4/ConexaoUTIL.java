@@ -2,6 +2,9 @@ package TrabalhoPratico4;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ConexaoUTIL {
 
@@ -20,11 +23,5 @@ public class ConexaoUTIL {
 		
 		return DriverManager.getConnection("jdbc:mysql://localhost:3306/aulajava?useTimezone=true&serverTimezone=UTC", "root", "admin");		
 	}
-	/*public static void main(String[]args) {
-		try {
-			System.out.println(getInstance().getConnection());
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-	}*/
+	
 }

@@ -1,19 +1,21 @@
 package TrabalhoPratico4;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 public class TP4 extends JFrame {
 
@@ -23,9 +25,9 @@ public class TP4 extends JFrame {
 	private JTextField txtSalario;
 	private JTextField txtCargo;
 
-	/**
-	 * Launch the application.
-	 */
+	TP4Controller tpc = new TP4Controller();
+	static int count = 0;
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -63,7 +65,14 @@ public class TP4 extends JFrame {
 		btnPesquisar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// Evento de Pesquisar
+				var search = txtPesquisa.getText();
+				var winF = tpc.getFuncByName(search);
+				var winC = tpc.getCargobyId(winF.get(0).cargo);
+				
+				txtNome.setText(winF.get(0).nome);		
+				txtSalario.setText(Double.toString(winF.get(0).salario));
+				txtCargo.setText(winC);
+				//JOptionPane.showMessageDialog(null, );
 			}
 		});
 		btnPesquisar.addActionListener(new ActionListener() {
