@@ -27,6 +27,8 @@ public class TP4 extends JFrame {
 
 	TP4Controller tpc = new TP4Controller();
 	static int count = 0;
+	int sizeArray = 0;
+	boolean next = false;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -51,7 +53,6 @@ public class TP4 extends JFrame {
 		contentPane = new JPanel();
 		
 		
-		
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -65,14 +66,22 @@ public class TP4 extends JFrame {
 		btnPesquisar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				var search = txtPesquisa.getText();
-				var winF = tpc.getFuncByName(search);
-				var winC = tpc.getCargobyId(winF.get(0).cargo);
-				
-				txtNome.setText(winF.get(0).nome);		
-				txtSalario.setText(Double.toString(winF.get(0).salario));
-				txtCargo.setText(winC);
-				//JOptionPane.showMessageDialog(null, );
+				try {
+					count = 0;
+					var search = txtPesquisa.getText();
+					var winF = tpc.getFuncByName(search);
+					sizeArray = winF.size();
+					var winC = tpc.getCargobyId(winF.get(count).cargo);
+					
+					txtNome.setText(winF.get(count).nome);		
+					txtSalario.setText(Double.toString(winF.get(count).salario));
+					txtCargo.setText(winC);
+					next = true;
+
+				}
+				catch(Exception exception) {
+					JOptionPane.showMessageDialog(null, "Não existe alguem com este nome!");
+				}
 			}
 		});
 		btnPesquisar.addActionListener(new ActionListener() {
@@ -106,7 +115,23 @@ public class TP4 extends JFrame {
 		btnAnterior.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//Evento de Anterior
+				count--;
+				if(count < 0) {
+					count = 0;
+				}
+				try {
+					if(next) {
+						var search = txtPesquisa.getText();
+						var winF = tpc.getFuncByName(search);
+						var winC = tpc.getCargobyId(winF.get(count).cargo);
+						
+						txtNome.setText(winF.get(count).nome);		
+						txtSalario.setText(Double.toString(winF.get(count).salario));
+						txtCargo.setText(winC);
+					}
+				} catch(Exception exception) {
+					
+				}
 			}
 		});
 		btnAnterior.addActionListener(new ActionListener() {
@@ -120,6 +145,24 @@ public class TP4 extends JFrame {
 		btnProximo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				try {					
+					if(next) {
+						if(count < (sizeArray-1))
+						{
+							count++;
+							var search = txtPesquisa.getText();
+							var winF = tpc.getFuncByName(search);
+							var winC = tpc.getCargobyId(winF.get(count).cargo);
+							
+							txtNome.setText(winF.get(count).nome);		
+							txtSalario.setText(Double.toString(winF.get(count).salario));
+							txtCargo.setText(winC);
+						}						
+					}
+				} catch(Exception exception) {
+					
+				}
 			}
 			//Evento de Proximo
 		});
