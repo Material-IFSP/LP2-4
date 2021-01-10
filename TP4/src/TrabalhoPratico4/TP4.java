@@ -14,10 +14,10 @@ import java.awt.Font;
 public class TP4 extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField txtPesquisa;
+	private JTextField txtNome;
+	private JTextField txtSalario;
+	private JTextField txtCargo;
 
 	/**
 	 * Launch the application.
@@ -47,14 +47,14 @@ public class TP4 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(86, 11, 207, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtPesquisa = new JTextField();
+		txtPesquisa.setBounds(86, 11, 207, 20);
+		contentPane.add(txtPesquisa);
+		txtPesquisa.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Pesquisar");
-		btnNewButton.setBounds(140, 42, 104, 23);
-		contentPane.add(btnNewButton);
+		JButton btnPesquisar = new JButton("Pesquisar");
+		btnPesquisar.setBounds(140, 42, 104, 23);
+		contentPane.add(btnPesquisar);
 		
 		JLabel lblNewLabel = new JLabel("Nome");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -76,27 +76,27 @@ public class TP4 extends JFrame {
 		lblNewLabel_3.setBounds(10, 142, 46, 14);
 		contentPane.add(lblNewLabel_3);
 		
-		JButton btnNewButton_1 = new JButton("Anterior");
-		btnNewButton_1.setBounds(0, 167, 159, 26);
-		contentPane.add(btnNewButton_1);
+		JButton btnAnterior = new JButton("Anterior");
+		btnAnterior.setBounds(0, 167, 159, 26);
+		contentPane.add(btnAnterior);
 		
-		JButton btnNewButton_2 = new JButton("Pr\u00F3ximo");
-		btnNewButton_2.setBounds(159, 167, 159, 26);
-		contentPane.add(btnNewButton_2);
+		JButton btnProximo = new JButton("Pr\u00F3ximo");
+		btnProximo.setBounds(159, 167, 159, 26);
+		contentPane.add(btnProximo);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(175, 89, 133, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		txtNome = new JTextField();
+		txtNome.setBounds(175, 89, 133, 20);
+		contentPane.add(txtNome);
+		txtNome.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(175, 114, 133, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		txtSalario = new JTextField();
+		txtSalario.setBounds(175, 114, 133, 20);
+		contentPane.add(txtSalario);
+		txtSalario.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(175, 139, 133, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		txtCargo = new JTextField();
+		txtCargo.setBounds(175, 139, 133, 20);
+		contentPane.add(txtCargo);
+		txtCargo.setColumns(10);
 	}
 }
