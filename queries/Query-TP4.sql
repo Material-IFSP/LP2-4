@@ -32,4 +32,5 @@ insert into tbFuncs values(1, "Anderson", 4600, 2);
 insert into tbFuncs values(2, 'Angelo', 3500, 1);
 insert into tbFuncs values(3, 'Grazy', 5000, 3);
 insert into tbFuncs values(4, 'Elessão', 500, 4);
-select * from tbFuncs;
+insert into tbFuncs values(5, 'Renatuu', 5500, 4);
+SELECT * FROM tbFuncs WHERE nome_Func like "%Renatuu%";

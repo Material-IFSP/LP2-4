@@ -20,11 +20,11 @@ public class ConexaoUTIL {
 		
 		return DriverManager.getConnection("jdbc:mysql://localhost:3306/aulajava?useTimezone=true&serverTimezone=UTC", "root", "admin");		
 	}
-	public static void main(String[]args) {
+	/*public static void main(String[]args) {
 		try {
 			System.out.println(getInstance().getConnection());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 }

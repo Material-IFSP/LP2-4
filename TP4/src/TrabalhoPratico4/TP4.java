@@ -10,6 +10,10 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TP4 extends JFrame {
 
@@ -43,6 +47,9 @@ public class TP4 extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 334, 232);
 		contentPane = new JPanel();
+		
+		
+		
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -53,34 +60,64 @@ public class TP4 extends JFrame {
 		txtPesquisa.setColumns(10);
 		
 		JButton btnPesquisar = new JButton("Pesquisar");
+		btnPesquisar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// Evento de Pesquisar
+			}
+		});
+		btnPesquisar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnPesquisar.setBounds(140, 42, 104, 23);
 		contentPane.add(btnPesquisar);
 		
-		JLabel lblNewLabel = new JLabel("Nome");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel.setBounds(30, 14, 46, 14);
-		contentPane.add(lblNewLabel);
+		JLabel lblNamePesquisa = new JLabel("Nome");
+		lblNamePesquisa.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNamePesquisa.setBounds(30, 14, 46, 14);
+		contentPane.add(lblNamePesquisa);
 		
-		JLabel lblNewLabel_1 = new JLabel("NOME");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1.setBounds(10, 92, 46, 14);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblNome = new JLabel("NOME");
+		lblNome.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNome.setBounds(10, 92, 46, 14);
+		contentPane.add(lblNome);
 		
-		JLabel lblNewLabel_2 = new JLabel("SAL\u00C1RIO");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_2.setBounds(10, 117, 66, 14);
-		contentPane.add(lblNewLabel_2);
+		JLabel lblSalario = new JLabel("SAL\u00C1RIO");
+		lblSalario.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblSalario.setBounds(10, 117, 66, 14);
+		contentPane.add(lblSalario);
 		
-		JLabel lblNewLabel_3 = new JLabel("CARGO");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_3.setBounds(10, 142, 46, 14);
-		contentPane.add(lblNewLabel_3);
+		JLabel lblCargo = new JLabel("CARGO");
+		lblCargo.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblCargo.setBounds(10, 142, 46, 14);
+		contentPane.add(lblCargo);
 		
 		JButton btnAnterior = new JButton("Anterior");
+		btnAnterior.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//Evento de Anterior
+			}
+		});
+		btnAnterior.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnAnterior.setBounds(0, 167, 159, 26);
 		contentPane.add(btnAnterior);
 		
 		JButton btnProximo = new JButton("Pr\u00F3ximo");
+		btnProximo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+			//Evento de Proximo
+		});
+		btnProximo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnProximo.setBounds(159, 167, 159, 26);
 		contentPane.add(btnProximo);
 		
