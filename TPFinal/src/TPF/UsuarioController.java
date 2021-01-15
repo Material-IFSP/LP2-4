@@ -8,7 +8,7 @@ import java.util.List;
 
 public class UsuarioController {
 	
-	public void AddUser(String nome, int idade, double peso, double altura, String objetivo ){
+	public void AddUser(String nome, int idade, float peso, float altura, String objetivo ){
 		
 			try {
 				

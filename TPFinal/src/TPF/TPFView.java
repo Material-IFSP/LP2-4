@@ -137,16 +137,21 @@ public class TPFView extends JFrame {
 		btnIncluir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double peso = Double.parseDouble(txtPeso.getText());
-				int idade = Integer.parseInt(txtIdade.getText());
-				double altura = Double.parseDouble(txtAltura.getText());
-				
-				userController.AddUser(txtNome.getText(), idade, peso, altura, txtObjetivo.getText());
-				txtAltura.setText("");
-				txtIdade.setText("");
-				txtNome.setText("");
-				txtPeso.setText("");
-				txtObjetivo.setText("");
+				try {
+					float peso = Float.parseFloat(txtPeso.getText());
+					int idade = Integer.parseInt(txtIdade.getText());
+					float altura = Float.parseFloat(txtAltura.getText());
+					
+					userController.AddUser(txtNome.getText(), idade, peso, altura, txtObjetivo.getText());
+					txtAltura.setText("");
+					txtIdade.setText("");
+					txtNome.setText("");
+					txtPeso.setText("");
+					txtObjetivo.setText("");
+					JOptionPane.showMessageDialog(null, "Salvo!");
+				}catch(Exception exception) {
+					JOptionPane.showMessageDialog(null, "Erro ao salvar. verifique se preencheu corretamente os dados");
+				}
 			}
 		});
 		btnIncluir.setBounds(238, 85, 78, 22);

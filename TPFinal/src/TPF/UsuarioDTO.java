@@ -10,8 +10,8 @@ public class UsuarioDTO {
 	public void setIdade(int idade) {
 		this.idade = idade;
 	}
-	public double altura;
-	public double peso;
+	public float altura;
+	public float peso;
 	public String objetivo;
 	
 	
@@ -21,16 +21,16 @@ public class UsuarioDTO {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public double getAltura() {
+	public Float getAltura() {
 		return altura;
 	}
-	public void setAltura(double altura) {
+	public void setAltura(float altura) {
 		this.altura = altura;
 	}
-	public double getPeso() {
+	public float getPeso() {
 		return peso;
 	}
-	public void setPeso(double peso) {
+	public void setPeso(float peso) {
 		this.peso = peso;
 	}
 	public String getObjetivo() {
