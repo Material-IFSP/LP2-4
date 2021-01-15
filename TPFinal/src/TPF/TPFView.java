@@ -25,9 +25,8 @@ public class TPFView extends JFrame {
 	private JTextField txtAltura;
 	private JTextField txtObjetivo;
 
-	/**
-	 * Launch the application.
-	 */
+	UsuarioController userController = new UsuarioController();
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -111,6 +110,8 @@ public class TPFView extends JFrame {
 		btnIncluir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				userController.AddUser("Anderson", 26, 83.50, 1.67, "Ganhar massa magra");
 				JOptionPane.showMessageDialog(null, "Opa");
 			}
 		});

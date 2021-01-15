@@ -1,18 +1,13 @@
 package TPF;
 
 public class UsuarioDTO {
-	public int id;
+
 	public String nome;
 	public double altura;
 	public double peso;
 	public String objetivo;
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 	public String getNome() {
 		return nome;
 	}
