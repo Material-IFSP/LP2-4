@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -19,6 +20,10 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.nio.DoubleBuffer;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 
 public class TPFView extends JFrame {
@@ -30,6 +35,7 @@ public class TPFView extends JFrame {
 	private JTextField txtAltura;
 	private JTextField txtObjetivo;
 
+	Gson gson = new GsonBuilder().setPrettyPrinting().create();
 	UsuarioController userController = new UsuarioController();
 	
 	public static void main(String[] args) {
@@ -131,8 +137,11 @@ public class TPFView extends JFrame {
 		btnIncluir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				double peso = Double.parseDouble(txtPeso.getText());
+				int idade = Integer.parseInt(txtIdade.getText());
+				double altura = Double.parseDouble(txtAltura.getText());
 				
-				userController.AddUser(txtNome.getText(), 26, 83.50, 1.67, "Ganhar massa magra");
+				userController.AddUser(txtNome.getText(), idade, peso, altura, txtObjetivo.getText());
 				txtAltura.setText("");
 				txtIdade.setText("");
 				txtNome.setText("");
@@ -147,9 +156,11 @@ public class TPFView extends JFrame {
 		btnMostrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Gson listToJson = new Gson(); 
 				
-				//JOptionPane.showMessageDialog(null,x.toString() );
+			ArrayList<UsuarioDTO> listUser = new ArrayList<UsuarioDTO>();
+			listUser = (ArrayList<UsuarioDTO>) userController.getAllUser();	
+			var x = gson.toJson(listUser)+"\n";		
+			JOptionPane.showMessageDialog(null, x);
 			}
 		});
 		btnMostrar.setBounds(98, 135, 149, 23);
