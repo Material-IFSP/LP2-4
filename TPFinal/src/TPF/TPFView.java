@@ -9,8 +9,12 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class TPFView extends JFrame {
 
@@ -104,6 +108,12 @@ public class TPFView extends JFrame {
 		contentPane.add(txtObjetivo);
 		
 		JButton btnIncluir = new JButton("Incluir");
+		btnIncluir.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JOptionPane.showMessageDialog(null, "Opa");
+			}
+		});
 		btnIncluir.setBounds(238, 85, 78, 22);
 		contentPane.add(btnIncluir);
 		
