@@ -1,11 +1,15 @@
 package TPF;
 
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.google.gson.Gson;
+
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -15,6 +19,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 
 public class TPFView extends JFrame {
 
@@ -53,11 +58,27 @@ public class TPFView extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtAltura.setText("");
+				txtIdade.setText("");
+				txtNome.setText("");
+				txtPeso.setText("");
+				txtObjetivo.setText("");
+			}
+		});
 		btnLimpar.setHorizontalAlignment(SwingConstants.LEFT);
 		btnLimpar.setBounds(10, 135, 78, 23);
 		contentPane.add(btnLimpar);
 		
 		JButton btnSair = new JButton("Sair");
+		btnSair.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.exit(0);
+			}
+		});
 		btnSair.setBounds(257, 135, 59, 22);
 		contentPane.add(btnSair);
 		
@@ -111,14 +132,26 @@ public class TPFView extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				userController.AddUser("Anderson", 26, 83.50, 1.67, "Ganhar massa magra");
-				JOptionPane.showMessageDialog(null, "Opa");
+				userController.AddUser(txtNome.getText(), 26, 83.50, 1.67, "Ganhar massa magra");
+				txtAltura.setText("");
+				txtIdade.setText("");
+				txtNome.setText("");
+				txtPeso.setText("");
+				txtObjetivo.setText("");
 			}
 		});
 		btnIncluir.setBounds(238, 85, 78, 22);
 		contentPane.add(btnIncluir);
 		
 		JButton btnMostrar = new JButton("Apresentar Dados");
+		btnMostrar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Gson listToJson = new Gson(); 
+				
+				//JOptionPane.showMessageDialog(null,x.toString() );
+			}
+		});
 		btnMostrar.setBounds(98, 135, 149, 23);
 		contentPane.add(btnMostrar);
 	}

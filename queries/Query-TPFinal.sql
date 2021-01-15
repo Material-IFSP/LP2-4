@@ -9,5 +9,5 @@ create table tbUsuario (
     objetivo varchar(30)  
 );
 
+drop table tbUsuario;
 select * from tbUsuario;
-delete from tbUsuario where idade != 0;

@@ -3,6 +3,13 @@ package TPF;
 public class UsuarioDTO {
 
 	public String nome;
+	public int idade;
+	public int getIdade() {
+		return idade;
+	}
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
 	public double altura;
 	public double peso;
 	public String objetivo;
